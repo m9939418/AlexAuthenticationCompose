@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -6,7 +9,16 @@ plugins {
     id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
     id("org.jetbrains.kotlin.plugin.serialization")
+    id("com.google.gms.google-services")
 }
+
+// Load local.properties
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localProperties.load(FileInputStream(localPropertiesFile))
+}
+
 
 android {
     namespace = "com.alex.yang.authenticationcompose"
@@ -22,6 +34,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "GOOGLE_WEB_CLINENT_ID", "\"${localProperties.getProperty("GOOGLE_WEB_CLINENT_ID", "")}\"")
     }
 
     buildTypes {
@@ -42,6 +56,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -87,4 +102,8 @@ dependencies {
 
     // Facebook SDK
     implementation("com.facebook.android:facebook-login:18.1.3")
+
+    // Coil
+    implementation(libs.coil)
+    implementation(libs.coil.compose)
 }
