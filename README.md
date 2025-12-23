@@ -18,11 +18,11 @@ AuthenticationCompose 是一個以 **Firebase Authentication + Multiple OAuth Pr
 
 ## Demo
 
-| Provider | Screenshot |
-| -------- | ---------- |
-| **Google** | ![Google Login](docs/demo.google.png) |
-| **Facebook** | ![Facebook Login](docs/demo.fb.png) |
-| **GitHub** | ![GitHub Login](docs/demo.github.png) |
+| Provider | Screenshot                            |
+| -------- |---------------------------------------|
+| **Google** | ![Google Login](docs/demo_google.png) |
+| **Facebook** | ![Facebook Login](docs/demo_fb.png)   |
+| **GitHub** | ![GitHub Login](docs/demo_github.png) |
 
 ---
 
